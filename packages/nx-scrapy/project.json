@@ -1,0 +1,61 @@
+{
+  "name": "nx-scrapy",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/nx-scrapy/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/nx-scrapy",
+        "main": "packages/nx-scrapy/src/index.ts",
+        "tsConfig": "packages/nx-scrapy/tsconfig.lib.json",
+        "assets": [
+          "packages/nx-scrapy/*.md",
+          {
+            "input": "./packages/nx-scrapy/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/nx-scrapy/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/nx-scrapy",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/nx-scrapy",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/nx-scrapy/**/*.ts",
+          "packages/nx-scrapy/generators.json",
+          "packages/nx-scrapy/executors.json",
+          "packages/nx-scrapy/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/nx-scrapy"],
+      "options": {
+        "jestConfig": "packages/nx-scrapy/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

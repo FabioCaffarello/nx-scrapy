@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "nx-scrapy",
+  "version": "0.0.1",
+  "generators": {
+    "nx-scrapy": {
+      "factory": "./src/generators/nx-scrapy/generator",
+      "schema": "./src/generators/nx-scrapy/schema.json",
+      "description": "nx-scrapy generator"
+    }
+  }
+}
